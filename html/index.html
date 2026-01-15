@@ -58,7 +58,7 @@
                                     </div>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="products.html">Products</a>
+                                    <a class="nav-link" href="position.html">Products</a>
                                 </li>
 
                                 <li class="nav-item">
@@ -76,7 +76,15 @@
                                     </div>
                                 </li>
                             </ul>
-                            <ul class="navbar-nav">
+                            <ul class="navbar-nav" id="login-area">
+                                <li class="nav-item">
+                                    <a class="nav-link d-flex" href="login.html">
+                                        <i class="far fa-user mr-2 tm-logout-icon"></i>
+                                        <span>login</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav dp-none" id="logout-area">
                                 <li class="nav-item">
                                     <a class="nav-link d-flex" href="login.html">
                                         <i class="far fa-user mr-2 tm-logout-icon"></i>
@@ -116,7 +124,7 @@
 
                             </div>
                             <div class="col-4 text-right">
-                                <a href="products.html" class="tm-link-black">View All</a>
+                                <a href="position.html" class="tm-link-black">View All</a>
                             </div>
                         </div>
                         <ol class="tm-list-group tm-list-group-alternate-color tm-list-group-pad-big">
@@ -198,6 +206,10 @@
     <script src="static/js/bootstrap.min.js"></script>
     <!-- https://getbootstrap.com/ -->
     <script src="static/js/tooplate-scripts.js"></script>
+
+
+    <script src="static/js/include.js"></script>
+
     <script>
         let ctxLine,
             ctxBar,
