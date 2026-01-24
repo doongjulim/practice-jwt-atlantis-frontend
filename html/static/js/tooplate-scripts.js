@@ -197,8 +197,8 @@ function drawCalendar() {
       events: [
         {
           title: "Meeting",
-          start: "2018-09-1",
-          end: "2018-09-2"
+          start: "2026-01-01",
+          end: "2026-02-02"
         },
         {
           title: "Marketing trip",

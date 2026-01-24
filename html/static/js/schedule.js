@@ -23,14 +23,15 @@ $(function() {
     //초기값을 오늘 날짜로 설정해줘야 합니다.
     $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
 
-    $.positionSet();
+    $.scheduleSet();
 });
 
-$("#datepicker").change(function (){
-    $.positionSet();
-})
+$("#datepicker").change(function () {
+    $.scheduleSet();
+});
 
-$.positionSet = function () {
+
+$.scheduleSet = function () {
     let workDay = $("#datepicker").val();
     $.ajax({
         beforeSend: function (req) {
@@ -38,23 +39,49 @@ $.positionSet = function () {
                 req.setRequestHeader('Authorization', localStorage.token);
             }
         },
-        url: ajaxUrl + "/api/v2/position",
+        url: ajaxUrl + "/api/v2/schedule",
         type: 'GET',
         dataType: "json",
         data: {'workDay': workDay},
-        contentType: "application/json",
         headers: {"Authorization": "token"},
         success: function (result) {
-            $("#position-table td").empty();
-            $("#seven-position-table td").empty();
-            result.body.forEach(function (item, index) {
-                if(item.workPart != null) {
-                    $("#" + item.workPart + item.workTime).append(item.name);
-                }
-                if(item.nightWorkPart != null){
-                    $("#" + item.nightWorkPart).append(item.name);
-                }
-            });
+            let data = result.body;
+            $("#schedule-table").empty();
+            $("#schedule-table").append(scheduleSet);
+            $.each(data,function (key,value){
+                $("#schedule-table").append(scheduleDataForm);
+                let dataLine = $("#schedule-table tr:last-child");
+                value.forEach(function (item,index) {
+                    if(index==0){
+                        dataLine.children(".schedule-name-area").append(item.name);
+                    }
+                    dataLine.children(".week-of-"+item.dayOfWeek).text(item.workCode);
+                })
+            })
         }
     })
 }
+
+const scheduleSet = "" +
+    "                                <tr class=\"tm-tr-header\">\n" +
+    "                                    <th>이름</th>\n" +
+    "                                    <th>월</th>\n" +
+    "                                    <th>화</th>\n" +
+    "                                    <th>수</th>\n" +
+    "                                    <th>목</th>\n" +
+    "                                    <th>금</th>\n" +
+    "                                    <th>토</th>\n" +
+    "                                    <th>일</th>\n" +
+    "                                </tr>" +
+    "";
+
+const scheduleDataForm = "<tr>\n" +
+    "                                <td class='tm-text-left schedule-name-area'></td>\n" +
+    "                                <td class='week-of-1'>휴</td>\n" +
+    "                                <td class='week-of-2'>휴</td>\n" +
+    "                                <td class='week-of-3'>휴</td>\n" +
+    "                                <td class='week-of-4'>휴</td>\n" +
+    "                                <td class='week-of-5'>휴</td>\n" +
+    "                                <td class='week-of-6'>휴</td>\n" +
+    "                                <td class='week-of-7'>휴</td>\n" +
+    "                            </tr>";

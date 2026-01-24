@@ -1,7 +1,7 @@
 $(function (){
     if(localStorage.token != null){
-        $("#login-area").addClass("dp-none");
-        $("#logout-area").removeClass("dp-none");
+        $(".login-area").addClass("dp-none");
+        $(".logout-area").removeClass("dp-none");
     }
 })
 

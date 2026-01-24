@@ -88,10 +88,14 @@ th {
   padding-left: 6px;
   padding-right: 6px;
 }
-#position-table{
+#position-table {
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
+}
+
+#schedule-table {
+  width: 100%;
 }
 
 #seven-position-table {
