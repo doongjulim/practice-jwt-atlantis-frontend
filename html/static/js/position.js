@@ -30,8 +30,12 @@ $("#datepicker").change(function (){
     $.positionSet();
 })
 
+$("#add-auto-position").click(function (){
+    $.addAutoPosition();
+})
+
 $.positionSet = function () {
-    let workDay = $("#datepicker").val();
+    const workDay = $("#datepicker").val();
     $.ajax({
         beforeSend: function (req) {
             if (localStorage.token) {
@@ -55,6 +59,33 @@ $.positionSet = function () {
                     $("#" + item.nightWorkPart).append(item.name);
                 }
             });
-        }
+        },error: function(xhr, status, error) {
+            alert("포지션 불러오기 실패. 관리자에게 문의해주세요.");
+        },
+    })
+}
+
+$.addAutoPosition = function() {
+    const  workDay = $("#datepicker").val();
+    if(!confirm("자동생성시 해당 날짜의 모든 포지션은 삭제됩니다. 동의하십니까?")){
+        return false;
+    }
+    $.ajax({
+        beforeSend: function (req) {
+            if (localStorage.token) {
+                req.setRequestHeader('Authorization', localStorage.token);
+            }
+        },
+        url: ajaxUrl + "/api/v2/position/auto",
+        type: 'GET',
+        dataType: "json",
+        data: {'workDay': workDay},
+        contentType: "application/json",
+        headers: {"Authorization": "token"},
+        success: function (result) {
+            location.reload();
+        },error: function(xhr, status, error) {
+            alert("자동생성 실패. 관리자에게 문의해주세요.");
+        },
     })
 }

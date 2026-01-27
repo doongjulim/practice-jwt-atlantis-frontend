@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Accounts Page - Dashboard Template</title>
+  <!--
+
+  Template 2108 Dashboard
+
+  http://www.tooplate.com/view/2108-dashboard
+
+  -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+  <!-- https://fonts.google.com/specimen/Open+Sans -->
+  <link rel="stylesheet" href="static/css/fontawesome.min.css">
+  <!-- https://fontawesome.com/ -->
+  <link rel="stylesheet" href="static/css/bootstrap.min.css">
+  <!-- https://getbootstrap.com/ -->
+  <link rel="stylesheet" href="static/css/tooplate.css">
+</head>
+
+<body class="bg03">
+<div class="container">
+  <div data-include-path="navbar.html"></div>
+
+  <!-- row -->
+  <div class="row tm-content-row tm-mt-big">
+    <div class="tm-col tm-col-big">
+      <div class="bg-white tm-block">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="tm-block-title">add Account</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <form action="" class="tm-signup-form">
+              <div class="form-group">
+                <label for="username">사번 (ID)</label>
+                <input placeholder="ex) 24100099" id="username" name="username" type="text" class="form-control validate">
+              </div>
+              <div class="form-group">
+                <label for="name">이름</label>
+                <input placeholder="ex) 로티" id="name" name="name" type="text" class="form-control validate">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input placeholder="******" id="password" name="password" type="password" class="form-control validate">
+              </div>
+              <div class="form-group">
+                <label for="password_check">Re-enter Password</label>
+                <input placeholder="******" id="password_check" name="password_check" type="password" class="form-control validate">
+              </div>
+              <div class="form-group">
+                <label for="role">사용자 등급</label>
+                <select  id="role" name="role" class="form-control-sm validate" >
+                  <option value="USER">사용자</option>
+                  <option value="ADMIN">관리자</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="grade">가능 구분</label>
+                <select  id="grade" name="grade" class="form-control-sm validate">
+                  <option value="NORMAL">기본</option>
+                  <option value="ATLANTIS_LOADER_ONE_MANAGE">로/1 가능</option>
+                  <option value="SWING_LINE_MANAGE">스줄 가능</option>
+                  <option value="SWING_CPO">스씨 가능</option>
+                  <option value="ATLANTIS_LINE_MANAGE">아줄 가능</option>
+                  <option value="S_CPO">S-CPO</option>
+                </select>
+              </div>
+              <div class="row">
+                <div class="col-12 col-sm-4">
+                  <button type="button" id="add-user" class="btn btn-primary">등록</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--<div class="tm-col tm-col-small">
+        <div class="bg-white tm-block">
+            <h2 class="tm-block-title">Profile Image</h2>
+            <img src="static/img/profile-image.png" alt="Profile Image" class="img-fluid">
+            <div class="custom-file mt-3 mb-3">
+                <input id="fileInput" type="file" style="display:none;" />
+                <input type="button" class="btn btn-primary d-block mx-xl-auto" value="Upload New..." onclick="document.getElementById('fileInput').click();"
+                />
+            </div>
+        </div>
+    </div>-->
+  </div>
+  <footer class="row tm-mt-small">
+    <div class="col-12 font-weight-light">
+      <p class="d-inline-block tm-bg-black text-white py-2 px-4">
+        Copyright &copy; 2018 Admin Dashboard . Created by
+        <a rel="nofollow" href="https://www.tooplate.com" class="text-white tm-footer-link">Tooplate</a>
+      </p>
+    </div>
+  </footer>
+</div>
+
+<script src="static/js/jquery-3.3.1.min.js"></script>
+<!-- https://jquery.com/download/ -->
+<script src="static/js/bootstrap.min.js"></script>
+<!-- https://getbootstrap.com/ -->
+<script src="static/js/include.js"></script>
+<script src="static/js/add-account.js"></script>
+
+</body>
+
+</html>

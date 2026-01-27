@@ -160,7 +160,7 @@ $.addSchedule = function (){
         ),
         success : function (result) {
             alert("등록 완료");
-            location.href = "position.html";
+            location.href = "schedule.html";
         },error: function(xhr, status, error) {
             console.error('오류:', status, error);
         },

@@ -3,6 +3,10 @@ const ajaxUrl = "http://localhost:8080";
 $(function() {
     $("#datepicker").datepicker({
         dateFormat: 'yy-mm-dd' //달력 날짜 형태
+        ,beforeShowDay: function(date){
+            let day = date.getDay();
+            return [(day != 0 && day != 2 && day != 3 && day != 4 && day != 5 && day != 6)];
+        }
         ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
         ,showMonthAfterYear:true // 월- 년 순서가아닌 년도 - 월 순서
         ,changeYear: true //option값 년 선택 가능
@@ -19,11 +23,6 @@ $(function() {
         ,minDate: "-5Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
         ,maxDate: "+5y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)
     });
-
-    //초기값을 오늘 날짜로 설정해줘야 합니다.
-    $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-
-    $.scheduleSet();
 });
 
 $("#datepicker").change(function () {
@@ -58,7 +57,9 @@ $.scheduleSet = function () {
                     dataLine.children(".week-of-"+item.dayOfWeek).text(item.workCode);
                 })
             })
-        }
+        },error: function(xhr, status, error) {
+            alert("자동생성 실패. 관리자에게 문의해주세요.");
+        },
     })
 }
 
