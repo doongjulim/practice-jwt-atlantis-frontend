@@ -1,7 +1,6 @@
 $(function (){
 
-    localStorage.token = "Bearer ";
-    console.log("### :" + localStorage.token);
+    //localStorage.token = "Bearer ";
     if(localStorage.token != null){
         $(".login-area").addClass("dp-none");
         $(".logout-area").removeClass("dp-none");

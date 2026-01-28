@@ -104,7 +104,6 @@ $.addSchedule = function (){
     const saturdayLeaveCode = $("#saturdayLeaveCode option:selected").val();
     const sundayLeaveCode = $("#sundayLeaveCode option:selected").val();
 
-    console.log("### : " + userId);
     if(userId == null || userId == ""){
         alert("캐스트를 선택해주세요.");
         return false;

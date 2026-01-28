@@ -67,6 +67,7 @@ $.positionSet = function () {
 
 $.addAutoPosition = function() {
     const  workDay = $("#datepicker").val();
+    console.log("workDay : " + workDay);
     if(!confirm("자동생성시 해당 날짜의 모든 포지션은 삭제됩니다. 동의하십니까?")){
         return false;
     }
@@ -77,9 +78,9 @@ $.addAutoPosition = function() {
             }
         },
         url: ajaxUrl + "/api/v2/position/auto",
-        type: 'GET',
+        type: 'POST',
         dataType: "json",
-        data: {'workDay': workDay},
+        data: JSON.stringify({'workDay': workDay}),
         contentType: "application/json",
         headers: {"Authorization": "token"},
         success: function (result) {
