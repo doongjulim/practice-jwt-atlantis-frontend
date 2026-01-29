@@ -31,7 +31,8 @@ $("#datepicker").change(function (){
 })
 
 $("#add-auto-position").click(function (){
-    $.addAutoPosition();
+    const workDay =  $("#datepicker").val();
+    location.href = 'update-attraction-schedule.html?workDay='+workDay;
 })
 
 $.positionSet = function () {
@@ -65,6 +66,7 @@ $.positionSet = function () {
     })
 }
 
+/*
 $.addAutoPosition = function() {
     const  workDay = $("#datepicker").val();
     console.log("workDay : " + workDay);
@@ -89,4 +91,4 @@ $.addAutoPosition = function() {
             alert("자동생성 실패. 관리자에게 문의해주세요.");
         },
     })
-}
+}*/

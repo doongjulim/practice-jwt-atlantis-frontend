@@ -17,13 +17,12 @@
 <body class="bg02">
 <div class="container">
   <div data-include-path="navbar.html"></div>
-  <!-- row -->
   <div class="row tm-mt-big">
     <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
       <div class="bg-white tm-block">
         <div class="row">
           <div class="col-12">
-            <h2 class="tm-block-title d-inline-block">퇴근 시간 등록</h2>
+            <h2 class="tm-block-title d-inline-block">금일 어트랙션 마감시간</h2>
           </div>
           <div class="col-12">
             <p class="text-black-50 p-sm-2 d-inline-block"> * 출근 코드를 골라야지만 퇴근 코드가 등록됩니다. </p>
@@ -33,7 +32,26 @@
         <div class="row mt-4 tm-edit-product-row">
           <div class="col-xl-7 col-lg-7 col-md-12">
             <div id="schedule-data-area">
-
+              <div class="input-group mb-3 update-data-line" data-id="'+value.id+'">
+                 <label class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">아트란티스</label>
+                 <select id="atlantis-leave-code" class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                   <option value="SIX_TIME">6퇴</option>
+                   <option value="SEVEN_TIME">7마</option>
+                   <option value="EIGHT_TIME">8마</option>
+                   <option selected value="NINE_TIME">9마</option>
+                   <option value="TEN_TIME">10마</option>
+                 </select>
+              </div>
+              <div class="input-group mb-3 update-data-line" data-id="'+value.id+'">
+                <label class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">환타지드림</label>
+                <select id="fantasy-dream-leave-code" class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                  <option value="SIX_TIME">6퇴</option>
+                  <option value="SEVEN_TIME">7마</option>
+                  <option selected value="EIGHT_TIME">8마</option>
+                  <option value="NINE_TIME">9마</option>
+                  <option value="TEN_TIME">10마</option>
+                </select>
+              </div>
             </div>
 
             <div class="input-group mb-3">
@@ -57,12 +75,9 @@
 </div>
 
 <script src="static/js/jquery-3.3.1.min.js"></script>
-<!-- https://jquery.com/download/ -->
 <script src="static/jquery-ui-datepicker/jquery-ui.min.js"></script>
-<!-- https://jqueryui.com/download/ -->
 <script src="static/js/bootstrap.min.js"></script>
-<!-- https://getbootstrap.com/ -->
-<script src="static/js/update-leave-code-schedule.js"></script>
+<script src="static/js/update-attraction-schedule.js"></script>
 <script src="static/js/include.js"></script>
 
 <script>

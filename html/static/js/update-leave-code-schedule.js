@@ -36,7 +36,7 @@ $.setTodaySchedule = function (){
                     '<div class="input-group mb-3 update-data-line" data-id="'+value.id+'">' +
                     '   <label class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">'+value.name+'</label>' +
                     '   <label class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">'+value.workCode+'</label>' +
-                    '   <select name="userId" id="userSelector" class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7">' +
+                    '   <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7">' +
                     '     <option value="SIX_TIME">6퇴</option>' +
                     '     <option selected value="SEVEN_TIME">7퇴</option>' +
                     '     <option value="EIGHT_TIME">8퇴</option>' +
@@ -76,14 +76,39 @@ $.updateLeaveCode = function (){
         },
         type: 'PUT',
         dataType : "JSON",
+        async:false,
         contentType: "application/json",
         data: JSON.stringify(
             requests
         ),
         success : function (result) {
-            location.href = "position.html";
+            $.addAutoPosition();
         },error: function(xhr, status, error) {
             console.error('오류:', status, error);
+        },
+    })
+}
+
+$.addAutoPosition = function() {
+    if(!confirm("자동생성시 해당 날짜의 모든 포지션은 삭제됩니다. 동의하십니까?")){
+        return false;
+    }
+    $.ajax({
+        beforeSend: function (req) {
+            if (localStorage.token) {
+                req.setRequestHeader('Authorization', localStorage.token);
+            }
+        },
+        url: ajaxUrl + "/api/v2/position/auto",
+        type: 'POST',
+        dataType: "json",
+        data: JSON.stringify({'workDay': workDay}),
+        contentType: "application/json",
+        headers: {"Authorization": "token"},
+        success: function (result) {
+            location.href='position.html';
+        },error: function(xhr, status, error) {
+            alert("자동생성 실패. 관리자에게 문의해주세요.");
         },
     })
 }
