@@ -16,6 +16,10 @@ $("#edit-user").click(function (){
     $.editUser();
 })
 
+$("#delete-user").click(function (){
+    $.deleteUser();
+})
+
 $.setEditUser = function (place){
     userId = $(place).data('id');
     $.ajax({
@@ -111,7 +115,7 @@ $.editUser = function (){
         type: 'PUT',
         dataType: "json",
         data: {
-            "id":id,
+            "id":userId,
             "username":username,
             "name":name,
             "password":password,
@@ -126,6 +130,40 @@ $.editUser = function (){
         },
     })
 }
+
+$.deleteUser = function (){
+    if(userId == ""){
+        alert("사용자를 선택해주세요.");
+        return false;
+    }
+
+    if(!confirm("삭제하시겠습니까?")){
+        return false;
+    }
+
+
+    $.ajax({
+        beforeSend: function (req) {
+            if (localStorage.token) {
+                req.setRequestHeader('Authorization', localStorage.token);
+            }
+        },
+        url: ajaxUrl + "/api/v2/user",
+        type: 'Patch',
+        dataType: "json",
+        data: {
+            "id":userId
+        },
+        headers: {"Authorization": "token"},
+        success: function (result) {
+            location.reload();
+        },error: function(xhr, status, error) {
+            alert("수정 실패. 관리자에게 문의해주세요.");
+        },
+    })
+}
+
+
 
 
 const usersForm = "<li class=\"tm-list-group-item\"></li>";

@@ -50,6 +50,7 @@ $.scheduleSet = function () {
             $.each(data,function (key,value){
                 $("#schedule-table").append(scheduleDataForm);
                 let dataLine = $("#schedule-table tr:last-child");
+                dataLine.data('id',)
                 value.forEach(function (item,index) {
                     if(index==0){
                         dataLine.children(".schedule-name-area").append(item.name);
