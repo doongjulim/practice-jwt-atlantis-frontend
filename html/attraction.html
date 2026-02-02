@@ -34,7 +34,7 @@
                 <div class="bg-white tm-block">
                     <div class="row">
                         <div class="col-12">
-                            <h2 class="tm-block-title d-inline-block">Attraction</h2>
+                            <h2 class="tm-block-title d-inline-block">Attraction Schedule</h2>
                         </div>
                         <div class="col-12">
                             <input type="datepicker" id="datepicker" class="mb-2" readonly/>
@@ -48,52 +48,40 @@
                 <div class="bg-white tm-block">
                     <div class="row">
                         <div class="col-12">
-                            <h2 class="tm-block-title">Edit Account</h2>
+                            <h2 class="tm-block-title">Edit Attraction Schedule</h2>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
                             <form action="" class="tm-signup-form">
                                 <div class="form-group">
-                                    <label for="username">사번 (ID)</label>
-                                    <input placeholder="ex) 24100099" id="username" name="username" type="text" class="form-control validate">
+                                    <label for="name">어트랙션 명</label>
+                                    <p id="name" type="text" class="custom-control">
+                                    </p>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">이름</label>
-                                    <input placeholder="ex) 로티" id="name" name="name" type="text" class="form-control validate">
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input placeholder="******" id="password" name="password" type="password" class="form-control validate">
-                                </div>
-                                <div class="form-group">
-                                    <label for="password2">Re-enter Password</label>
-                                    <input placeholder="******" id="password2" name="password2" type="password" class="form-control validate">
-                                </div>
-                                <div class="form-group">
-                                    <label for="role">사용자 등급</label>
+                                    <label for="role">마감시간</label>
                                     <select  id="role" name="role" class="form-control-sm validate" >
-                                        <option value="USER">사용자</option>
-                                        <option value="ADMIN">관리자</option>
+                                        <option value="SIX_TIME">6마감</option>
+                                        <option value="SEVEN_TIME">7마감</option>
+                                        <option value="EIGHT_TIME">8마감</option>
+                                        <option value="NINE_TIME">9마감</option>
+                                        <option value="TEN_TIME">10마감</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="grade">가능 구분</label>
+                                    <label for="grade">운영상태</label>
                                     <select  id="grade" name="grade" class="form-control-sm validate">
-                                        <option value="NORMAL">기본</option>
-                                        <option value="ATLANTIS_LOADER_ONE_MANAGE">로/1 가능</option>
-                                        <option value="SWING_LINE_MANAGE">스줄 가능</option>
-                                        <option value="SWING_CPO">스씨 가능</option>
-                                        <option value="ATLANTIS_LINE_MANAGE">아줄 가능</option>
-                                        <option value="S_CPO">S-CPO</option>
+                                        <option value="NORMAL">운영</option>
+                                        <option value="REGULAR_INSPECTION">정기점검</option>
+                                        <option value="EMERGENCY_INSPECTION">긴급점검</option>
+                                        <option value="TEMPORARY_INSPECTION">임시점검</option>
+                                        <option value="REGULAR_CLOSE">정기운휴</option>
                                     </select>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-sm-4">
-                                        <button type="button" id="edit-user" class="btn btn-primary">수정</button>
-                                    </div>
-                                    <div class="col-12 col-sm-8 tm-btn-right">
-                                        <button type="button" id="delete-user" class="btn btn-danger">삭제</button>
+                                        <button type="button" id="edit-attraction" class="btn btn-primary">수정</button>
                                     </div>
                                 </div>
 

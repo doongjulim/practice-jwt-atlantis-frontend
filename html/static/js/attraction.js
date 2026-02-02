@@ -37,23 +37,13 @@ $(document).on('change', '#datepicker', function() {
 
 $.setEditAttraction = function (place){
     attraction = $(place).data('attraction');
-    $.ajax({
-        beforeSend: function (req) {
-            if (localStorage.token) {
-                req.setRequestHeader('Authorization', localStorage.token);
-            }
-        },
-        url: ajaxUrl + "/api/v2/user/detail",
-        type: 'GET',
-        dataType: "json",
-        data: {'id': userId},
-        headers: {"Authorization": "token"},
-        success: function (result) {
-            const attraction = result.body;
-        },error: function(xhr, status, error) {
-            alert("조회 실패. 관리자에게 문의해주세요.");
-        },
-    })
+    const name = $(place).data('name');
+    const attractionStatus = $(place).data('attractionStatus');
+    const leaveCode = $(place).data('leaveCode');
+
+    $("#name").html(name);
+    $("#attractionStatus").val(attractionStatus).prop("selected", true);;
+    $("#leaveCode").val(leaveCode).prop("selected", true);;
 }
 
 $.setAttractions = function (){
@@ -79,9 +69,45 @@ $.setAttractions = function (){
                 attractionsArea.append("<li class=\"tm-list-group-item\">등록된 어트랙션 정보가 없습니다.</li>")
             }else{
                 attractions.forEach(function (item, index) {
-                    attractionsArea.append("<li class=\"tm-list-group-item user-line\" data-attraction='"+item.attraction+"'>"+item.name+"</li>")
+                    attractionsArea.append("<li class=\"tm-list-group-item attraction-line\" data-name='"+item.name+" data-attraction='"+item.attraction+" data-attractionStatus='"+item.attractionStatus+" data-leaveCode='"+item.leaveCode+"'>"+item.name+"</li>")
                 });
             }
+        },error: function(xhr, status, error) {
+            alert("관리자에게 문의해주세요.");
+        },
+    })
+}
+
+$.editAttraction = function (){
+
+    if(attraction == "" || attraction == null){
+        alert("선택된 어트랙션이 없습니다.");
+        return false;
+    }
+
+    const workDay = $("#datepicker").val();
+    const attractionStatus = $("#attractionStatus option:selected").val()
+    const leaveCode = $("#leaveCode")
+
+
+    $.ajax({
+        beforeSend: function (req) {
+            if (localStorage.token) {
+                req.setRequestHeader('Authorization', localStorage.token);
+            }
+        },
+        url: ajaxUrl + "/api/v2/attraction/schedule",
+        type: 'PUT',
+        data:{
+            'attraction':attraction,
+            'workDay':workDay,
+            'attractionStatus':attractionStatus,
+            'leaveCode':leaveCode
+        },
+        dataType: "json",
+        headers: {"Authorization": "token"},
+        success: function (result) {
+            location.reload();
         },error: function(xhr, status, error) {
             alert("관리자에게 문의해주세요.");
         },

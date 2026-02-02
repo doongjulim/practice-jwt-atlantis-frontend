@@ -54,7 +54,7 @@ $.updateAttractionSchedule = function (){
     ];
 
     $.ajax({
-        url : ajaxUrl + "/api/v2/attraction/schedule",
+        url : ajaxUrl + "/api/v2/attraction/schedules",
         beforeSend: function (req) {
             if (localStorage.token) {
                 req.setRequestHeader('Authorization', localStorage.token);
