@@ -1,8 +1,8 @@
 $(function (){
 
-    if(localStorage.token == null) {
+    /*if(localStorage.token == null) {
         location.href = "index.html";
-    }
+    }*/
 })
 
 // include.js
